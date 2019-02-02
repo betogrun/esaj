@@ -1,4 +1,5 @@
 require "esaj/version"
+require "esaj/page"
 
 module Esaj
   class Error < StandardError; end
