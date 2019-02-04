@@ -1,6 +1,6 @@
 # Esaj
 
-This scraper wraps the lawsuits querying services provided to the general public by the 'Sistema de Automação da Justiça' website.
+This scraper wraps the lawsuits querying services provided to the general public by the 'Sistema de Automação da Justiça' [website](https://esaj.tjsp.jus.br/cpopg/open.do).
 
 ## Installation
 
