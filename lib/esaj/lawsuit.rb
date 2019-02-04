@@ -1,27 +1,26 @@
 module Esaj
   class Lawsuit
-    attr_reader :code, :details_resource
+    attr_reader :raw_attributes
 
-    def initialize(code, details_resource)
-      @code = code
-      @details_resource = details_resource
+    def initialize(raw_attributes)
+      @raw_attributes = raw_attributes
     end
 
     def attributes
       {
-        code: formatted_code,
-        details_resource: formatted_details_resource
+        code: code,
+        details_resource: details_resource
       }
     end
 
     private
 
-    def formatted_code
-      code.strip
+    def code
+      raw_attributes[:lawsuit_code].strip
     end
 
-    def formatted_details_resource
-      "https://esaj.tjsp.jus.br#{details_resource}"
+    def details_resource
+      "https://esaj.tjsp.jus.br#{raw_attributes[:lawsuit_details_resource]}"
     end
   end
 end
