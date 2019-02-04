@@ -54,7 +54,6 @@ RSpec.describe Esaj::Scraper do
           raise_error(Esaj::RemoteError, 'error!')
         )
       end
-
     end
   end
 end
