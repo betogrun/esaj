@@ -20,7 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Perform the following operation to retrieve the lawsuits for a given OAB code and forum:
+
+```ruby
+Esaj::Query.new(oab_code: '000000', forum: :all).perform
+```
 
 ## Development
 
@@ -30,7 +34,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/esaj.
+Bug reports and pull requests are welcome on GitHub at https://github.com/betogrun/esaj.
 
 ## License
 
