@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    esaj (0.1.0)
+    esaj (0.2.0)
       nokogiri
 
 GEM
