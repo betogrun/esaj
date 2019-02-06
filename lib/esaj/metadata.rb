@@ -31,7 +31,7 @@ module Esaj
     end
 
     def formatted_pagination_result
-      pagination_element.text.split.uniq
+      pagination_element.text.split
     end
 
     def formatted_error_message

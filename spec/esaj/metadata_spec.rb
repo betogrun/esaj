@@ -12,7 +12,9 @@ RSpec.describe Esaj::Metadata do
 
   describe '#total_pages' do
     let(:pagination_element) { double(:pagination_element) }
-    let(:formatted_pagination_result) { ["Resultados", "1", "a", "25", "de", "64"] }
+    let(:formatted_pagination_result) do
+      ["Resultados", "1", "a", "13", "de", "13", "Resultados", "1", "a", "13", "de", "13"]
+    end
 
     before do
       allow(document).to(
@@ -20,12 +22,12 @@ RSpec.describe Esaj::Metadata do
         .and_return(pagination_element)
       )
       allow(pagination_element).to(
-        receive_message_chain(:text, :split, :uniq)
+        receive_message_chain(:text, :split)
         .and_return(formatted_pagination_result)
       )
     end
 
-    it { expect(subject.total_pages).to eq(3) }
+    it { expect(subject.total_pages).to eq(1) }
   end
 
   describe 'error methods' do
