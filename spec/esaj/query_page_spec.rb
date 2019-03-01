@@ -10,30 +10,25 @@ RSpec.describe Esaj::QueryPage do
     allow(parser_instance).to receive(:document).and_return(document)
   end
 
-
   describe "#result_set" do
-    let(:result_element) do
-      double(:result_element, text: 'code', :[] => 'resource')
-    end
+    let(:element) { double(:element) }
+    let(:result_item_instance) { double(:result_item_instance) }
+    let(:attributes) { double(:attributes) }
 
     before do
       allow(document).to(
-        receive(:css).with('a.linkProcesso').and_return([result_element])
+        receive(:css).with('div[id^="divProcesso"]').and_return([element])
       )
     end
 
     it do
-      expect(subject.result_set).to(
-        eq(
-          [
-            {
-              lawsuit_code: 'code',
-              lawsuit_details_resource: 'resource'
-            }
-          ]
-        )
+      expect(Esaj::ResultItem).to(
+        receive(:new).with(element).and_return(result_item_instance)
       )
+      expect(result_item_instance).to(
+        receive(:attributes).and_return(attributes)
+      )
+      expect(subject.result_set).to eq([attributes])
     end
-
   end
 end
