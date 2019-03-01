@@ -1,5 +1,4 @@
 require_relative 'scraper'
-require_relative 'lawsuit'
 
 module Esaj
   class Query
@@ -12,19 +11,13 @@ module Esaj
 
     def perform
       begin
-        lawsuits.map(&:attributes)
+        scraped_results
       rescue RemoteError => error
         { error: error.message }
       end
     end
 
     private
-
-    def lawsuits
-      scraped_results.map do |attributes|
-        Lawsuit.new(attributes)
-      end
-    end
 
     def scraped_results
       Scraper.new(oab_code, forum).results
